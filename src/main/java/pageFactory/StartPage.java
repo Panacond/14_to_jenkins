@@ -1,5 +1,6 @@
 package pageFactory;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,6 +17,7 @@ public class StartPage extends BasePage{
 
     public StartPage(WebDriver driver){super(driver);}
 
+    @Step("Type word: {keyWord} in search field")
     public void searchByKeyword(final String keyWord){
         new WebDriverWait(driver, Duration.ofSeconds(30))
                 .until(ExpectedConditions.elementToBeClickable(searchInput));

@@ -59,7 +59,7 @@
                     <suiteXmlFiles>
                         <suiteXmlFiles>firstTestOne.xml</suiteXmlFiles>
 <!--                        <suiteXmlFiles>testingParallel.xml</suiteXmlFiles>-->
-                        <suiteXmlFiles>testingParallelObject.xml</suiteXmlFiles>
+<!--                        <suiteXmlFiles>testingParallelObject.xml</suiteXmlFiles>-->
                     </suiteXmlFiles>
                     <reportsDirectory>test-output</reportsDirectory>
                 </configuration>

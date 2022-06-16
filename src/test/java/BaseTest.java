@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -14,7 +15,7 @@ import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
 import static io.github.bonigarcia.wdm.WebDriverManager.firefoxdriver;
 
 public class BaseTest {
-    private WebDriver driver;
+    protected static WebDriver driver;
     PropertiesReader properties = new PropertiesReader();
 
     @BeforeTest
@@ -24,7 +25,8 @@ public class BaseTest {
     public void testSetUp(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless","--no-gpu");
-        driver = new ChromeDriver(options);
+//        driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(properties.getUrl());
     }
@@ -36,7 +38,9 @@ public class BaseTest {
 
     public StartPage getStartPage(){return new StartPage(getDriver());}
 
+    @Step("Go to next page")
     public SearchPage getSearchPage(){return new SearchPage(getDriver());}
 
+    @Step("Open bucket page")
     public BucketPage getBucketPage(){return new BucketPage(getDriver());}
 }

@@ -1,5 +1,8 @@
 package support;
 
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
+
 public class TestData {
     private String product;
     private String brand;
@@ -8,15 +11,17 @@ public class TestData {
     public TestData(){}
 
     public TestData(String product, String brand, Integer minPrice) {
-        this.product = product;
-        this.brand = brand;
-        this.minPrice = minPrice;
+        setProduct(product);
+        setBrand(brand);
+        setMinPrice(minPrice);
     }
 
     public String getProduct() {
         return product;
     }
 
+    @Attachment("input grop")
+    @Step(" setup next data: {product}")
     public void setProduct(String product) {
         this.product = product;
     }
@@ -25,6 +30,7 @@ public class TestData {
         return brand;
     }
 
+    @Step(" setup next data: {brand}")
     public void setBrand(String brand) {
         this.brand = brand;
     }
@@ -33,6 +39,7 @@ public class TestData {
         return minPrice;
     }
 
+    @Step(" setup next data: {minPrice}")
     public void setMinPrice(Integer minPrice) {
         this.minPrice = minPrice;
     }

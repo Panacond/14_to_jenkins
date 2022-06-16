@@ -1,4 +1,8 @@
+import io.qameta.allure.Description;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Step;
 import org.apache.log4j.Logger;
+//import org.junit.jupiter.api.extension.ExtendWith;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pageFactory.BucketPage;
@@ -9,6 +13,7 @@ import support.PropertiesReader;
 import support.TestData;
 import support.XmlTestData;
 
+//@ExtendWith(TestListenerFailScreen.class)
 @Listeners(ConvertTestListener.class)
 public class FirstCaseTest extends BaseTest {
 
@@ -16,17 +21,24 @@ public class FirstCaseTest extends BaseTest {
     PropertiesReader properties = new PropertiesReader();
     TestData testData = XmlTestData.ReadXml(properties.getInitialData());
 
-    @Test (description = "run one test from file testData.xml")
+    final String description1 = "run one test from file testData.xml";
+    @Owner("Alex I")
+    @Description(description1)
+    @Test (description = description1 )
     public void checkExpensiveGoods() {
         testFlow(testData.getProduct(), testData.getBrand(), testData.getMinPrice());
     }
 
-    @Test (description = "input hard coding data")
+    final String description = "input hard coding data";
+    @Test (description = description )
+    @Owner("Alex I")
+    @Description(description)
     public void checkExpensiveGood() {
         String[] data = {"Ноутбук", "MSI" };
         int priceAssert = 5000;
         testFlow(data[0], data[1], priceAssert);
     }
+
 
     private void testFlow(String product, String brand, Integer minPrice) {
         StartPage startPage = getStartPage();

@@ -1,5 +1,6 @@
 package pageFactory;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.testng.asserts.SoftAssert;
 import support.PropertiesReader;
@@ -12,6 +13,7 @@ import static support.XmlTestData.WriteXml;
 public class BusinessLogic {
     PropertiesReader properties = new PropertiesReader();
 
+    @Step("business logic 'От дорогих к дешевым'")
     public void addToBucketExpensiveElementNoThreadSleep(SearchPage searchPage, String brand) {
         searchPage.clickCheckBoxMsi(brand);
         searchPage.implicitWait(10);
@@ -24,6 +26,7 @@ public class BusinessLogic {
         searchPage.clickGoToBucket();
     }
 
+    @Step("control results")
     public void CheckProduct(BucketPage bucketPage, TestData testData){
         Integer price = bucketPage.getStringPrice();
         testData.setRealPrice(price);

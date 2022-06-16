@@ -1,5 +1,6 @@
 package pageFactory;
 
+import io.qameta.allure.Step;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
@@ -47,6 +48,7 @@ public class SearchPage extends BasePage {
 
     public SearchPage(WebDriver driver){super(driver);}
 
+    @Step("setup check box {brand}")
     public void clickCheckBoxMsi(String brand){
         for (WebElement i: listCheckBoxTitle) {
             String attributeText =  i.getAttribute("data-id");
@@ -68,6 +70,7 @@ public class SearchPage extends BasePage {
         selectExpensive.click();
     }
 
+    @Step("get list in basket")
     public List<WebElement> getListAddToBucket(){
         new WebDriverWait(driver, Duration.ofSeconds(40)).until(
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
@@ -76,6 +79,7 @@ public class SearchPage extends BasePage {
         return listAddBucket;
     }
 
+    @Step("Click go to busket")
     public void clickGoToBucket(){
         new WebDriverWait(driver, Duration.ofSeconds(40)).until(
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
@@ -84,6 +88,7 @@ public class SearchPage extends BasePage {
         goToBucket.click();
     }
 
+    @Step("select filter 'От дорогих к дешевым'")
     public void clickPopUpByText(String visibleText){
         try {
             new WebDriverWait(driver, Duration.ofSeconds(40))
