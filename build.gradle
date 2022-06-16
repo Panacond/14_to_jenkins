@@ -43,7 +43,7 @@ dependencies {
 
 test {
     useTestNG() {
-//        suites 'firstTestOne.xml'
+        suites 'firstTestOne.xml'
     }
 }
 

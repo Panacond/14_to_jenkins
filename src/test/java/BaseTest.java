@@ -25,8 +25,8 @@ public class BaseTest {
     public void testSetUp(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless","--no-gpu");
-//        driver = new ChromeDriver(options);
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
+//        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(properties.getUrl());
     }
